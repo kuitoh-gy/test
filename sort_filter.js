@@ -6,11 +6,13 @@
         $slctFront = $('.slctFront'),
         $select = $('#sort');
 
+    $select.val(sortSelected);
+
     $slctFront.text($select.children('option:selected').text());
 
     $select.on('change',function(){
       $slctFront.text($select.children('option:selected').text());
-      //$form.submit();
+      $form.submit();
     });
 
     // 絞り込み
@@ -25,20 +27,20 @@
     $slctGenre.on('click',function(){
       $actvGenre.val($(this).attr('data-pu-val'));
       actvFilterChange();
-      //$form.submit();
+      $form.submit();
     });
 
     $slctAstrlgy.on('click',function(){
       $actvAstrlgy.val($(this).attr('data-ca-val'));
       actvFilterChange();
-      //$form.submit();
+      $form.submit();
     });
 
     $clearFilter.on('click',function(){
       $actvGenre.val('');
       $actvAstrlgy.val('');
       actvFilterChange();
-      //$form.submit();
+      $form.submit();
     });
 
     function actvFilterChange(){
@@ -70,8 +72,12 @@
           $list.append(articleArray.shift());
         }
         if(articleArray==0) $('.more').addClass('next');
+
+        if(articleArray.length == 0 && isNext == 0) {
+          document.getElementById("more").style.display="none";
+        }
       }else{
-        //$form.submit();
+        $form.submit();
       }
     }
   });
