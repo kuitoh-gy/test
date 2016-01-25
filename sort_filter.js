@@ -77,6 +77,7 @@
           document.getElementById("more").style.display="none";
         }
       }else{
+        document.getElementById("start").value = nextStart;
         $form.submit();
       }
     }
